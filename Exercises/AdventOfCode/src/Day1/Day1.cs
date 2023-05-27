@@ -2,6 +2,35 @@
 
 public class Day1
 {
+    private static int CheckAndUpdateMaxCalories(int currentTotal, int maxCalories)
+    {
+        if (currentTotal > maxCalories)
+        {
+            maxCalories = currentTotal;
+        }
+        return maxCalories;
+    }
+
+    private static (int, int, int) CheckAndUpdateTop3(int currentTotal, int maxCalories1, int maxCalories2, int maxCalories3)
+    {
+        if (currentTotal > maxCalories1)
+        {
+            maxCalories3 = maxCalories2;
+            maxCalories2 = maxCalories1;
+            maxCalories1 = currentTotal;
+        }
+        else if (currentTotal > maxCalories2)
+        {
+            maxCalories3 = maxCalories2;
+            maxCalories2 = currentTotal;
+        }
+        else if (currentTotal > maxCalories3)
+        {
+            maxCalories3 = currentTotal;
+        }
+        return (maxCalories1, maxCalories2, maxCalories3);
+    }
+
     public static int MaxCalories(string filePath)
     {
         // Initialize needed variables.
@@ -23,10 +52,7 @@ public class Day1
             if (line == "")
             {
                 // If the current calories are greater than the max calories, then we update the max calories.
-                if (currentTotal > maxCalories)
-                {
-                    maxCalories = currentTotal;
-                }
+                maxCalories = CheckAndUpdateMaxCalories(currentTotal, maxCalories);
                 // We reset the current calories and skip to the next iteration.
                 currentTotal = 0;
                 continue;
@@ -68,27 +94,7 @@ public class Day1
             if (line == "")
             {
                 // We check if this elf is one of the top 3 calorie holder. Then we reset the current calories and skip to the next iteration.
-                if (currentTotal > maxCalories1)
-                {
-                    maxCalories3 = maxCalories2;
-                    maxCalories2 = maxCalories1;
-                    maxCalories1 = currentTotal;
-                    currentTotal = 0;
-                    continue;
-                }
-                if (currentTotal > maxCalories2)
-                {
-                    maxCalories3 = maxCalories2;
-                    maxCalories2 = currentTotal;
-                    currentTotal = 0;
-                    continue;
-                }
-                if (currentTotal > maxCalories3)
-                {
-                    maxCalories3 = currentTotal;
-                    currentTotal = 0;
-                    continue;
-                }
+                (maxCalories1, maxCalories2, maxCalories3) = CheckAndUpdateTop3(currentTotal, maxCalories1, maxCalories2, maxCalories3);
                 currentTotal = 0;
                 continue;
             }
@@ -98,24 +104,7 @@ public class Day1
         }
 
         // To catch last elf.
-        if (currentTotal > maxCalories1)
-        {
-            maxCalories3 = maxCalories2;
-            maxCalories2 = maxCalories1;
-            maxCalories1 = currentTotal;
-            currentTotal = 0;
-        }
-        if (currentTotal > maxCalories2)
-        {
-            maxCalories3 = maxCalories2;
-            maxCalories2 = currentTotal;
-            currentTotal = 0;
-        }
-        if (currentTotal > maxCalories3)
-        {
-            maxCalories3 = currentTotal;
-            currentTotal = 0;
-        }
+        (maxCalories1, maxCalories2, maxCalories3) = CheckAndUpdateTop3(currentTotal, maxCalories1, maxCalories2, maxCalories3);
 
         return (maxCalories1 + maxCalories2 + maxCalories3);
     }
