@@ -1,6 +1,6 @@
-using Day1NS;
+using AdventOfCode;
 
-namespace Day1Tests;
+namespace AdventOfCodeTests;
 
 public class Day1Tests
 {

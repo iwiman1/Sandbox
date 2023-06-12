@@ -1,10 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿namespace AdventOfCode;
 
-namespace Day2NS;
-
-public class Day2
+public static class Day2
 {
-    private int GetPointsForMyChoice(string myChoice)
+    private static int GetPointsForMyChoice(string myChoice)
     {
         switch (myChoice)
         {
@@ -15,7 +13,7 @@ public class Day2
         }
     }
 
-    private int GetPointsForResult(string opponentChoice, string myChoice)
+    private static int GetPointsForResult(string opponentChoice, string myChoice)
     {
         switch (myChoice)
         {
@@ -47,7 +45,7 @@ public class Day2
         }
     }
 
-    public int MainMethod(string filePath)
+    public static int TotalPoints(string filePath)
     {
         // Initialize StreamReader.
         using StreamReader sr = new(filePath);
@@ -62,8 +60,8 @@ public class Day2
             // Trim to get rid of unwanted blank spaces.
             var line = rawLine.Trim();
 
-            var opponentChoice = line.Split(' ')[1];
-            var myChoice = line.Split(' ')[2];
+            var opponentChoice = line.Split(' ')[0];
+            var myChoice = line.Split(' ')[1];
 
             var pointsForMyChoice = GetPointsForMyChoice(myChoice);
 
@@ -71,7 +69,7 @@ public class Day2
 
             var roundPoints = pointsForMyChoice + pointsForResult;
 
-            totalPoints =+ roundPoints;
+            totalPoints += roundPoints;
         }
 
         return totalPoints;

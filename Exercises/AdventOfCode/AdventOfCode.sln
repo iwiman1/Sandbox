@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1", "src\Day1\Day1.csproj", "{AC4542BA-DE19-4F55-90BE-D9F1C61733C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode", "src\Day1\AdventOfCode.csproj", "{AC4542BA-DE19-4F55-90BE-D9F1C61733C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{8ABCD512-29FE-4853-A2F1-F5BAA1BF596E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{8ABCD512-29FE-4853-A2F1-F5BAA1BF596E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

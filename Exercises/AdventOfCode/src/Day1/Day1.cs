@@ -1,4 +1,4 @@
-﻿namespace Day1NS;
+﻿namespace AdventOfCode;
 
 public class Day1
 {
